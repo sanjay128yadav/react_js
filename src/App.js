@@ -29,7 +29,7 @@ function App() {
 
   let message = "Hi good morning";
   const demo = () => {
-        alert("Hi how are you? I am fine here");
+        alert("Hi how are you? I am fine here:");
         alert(message);
   }
 
