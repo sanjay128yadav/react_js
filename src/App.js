@@ -1,26 +1,21 @@
-import React, {Component} from 'react'
-
+import React, {useState} from 'react'
 import './App.css'
+import RenderMethod from './RenderMethod'
+import RenderMethodSetState from './RenderMethodSetState'
 
-class App extends Component {
+export default function App() {
+  const [name, setName] = useState("Samir")
+  return (
+    <>
+    <div className='App'>React Render Method</div>
 
-  constructor() {
-     super();
-     console.log("Constructor Called here")
-  }
+    <RenderMethod name = {name} />
 
-  render() {
-    console.log("Render Called here")
-      return (
-        <>
-        <div className='App'>
-          <h2>React Js Constructor Life Cycle Method In Class</h2>
-        </div>
-        </>
-      )
+    <button onClick={() =>setName("Sanjaty Yadav")}>Update Name</button>
 
-  }
-  
+    <RenderMethodSetState />
+    </>
+    
+  )
 }
 
-export default App;
