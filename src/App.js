@@ -6,32 +6,35 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = {
+      name: "Samir",
       count: 0,
     }
-    console.log("Constructor Called");
+    //console.log("Constructor Called");
   }
 
-  // Example 2
+  // Example 1
+  componentDidUpdate(prevProps, prevState) {
+    //console.log("Component Did Update Called");
 
-  incrementCount = () => {
-    this.setState((prevState) => ({
-        count: prevState.count + 1
-    }))
-  }
+    console.log(prevState.count, this.state.count);
 
-  componentDidMount() {
-    console.log("componentDidMount Called");
+    if (this.state.count, prevState.count){
+        alert("Working");
+        console.log("Component Did Update Called", prevState.count, this.state.count);
+    }
   }
+  
   render() {
-    console.log("Render Called");
+    //console.log("Render Called");
     return (
       <div className='App'>
-        <h2>Life Cycle Component Did Mount Method</h2>
+        <h2>Life Cycle Component Did Update Method</h2>
+        <h4>Count: {this.state.count}</h4>
 
-        {/* Example 2*/}
+        <button onClick={()=>this.setState({name:"Sanjay Yadav"})}>Update State</button>
 
-        <h2>Count: {this.state.count}</h2>
-        <button onClick={this.incrementCount}>Increment</button>
+        <button onClick={()=>this.setState({count: this.state.count + 1})}>Increment</button>
+
       </div>
     )
   }
