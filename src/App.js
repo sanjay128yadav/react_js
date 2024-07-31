@@ -1,20 +1,38 @@
-import React, {useState} from 'react'
+import React, { Component } from 'react'
 import './App.css'
-import RenderMethod from './RenderMethod'
-import RenderMethodSetState from './RenderMethodSetState'
 
-export default function App() {
-  const [name, setName] = useState("Samir")
-  return (
-    <>
-    <div className='App'>React Render Method</div>
+export default class App extends Component {
+  // Example 1
+  constructor() {
+    super()
+    this.state = {
+      count: 0,
+    }
+    console.log("Constructor Called");
+  }
 
-    <RenderMethod name = {name} />
+  // Example 2
 
-    <button onClick={() =>setName("Sanjaty Yadav")}>Update Name</button>
+  incrementCount = () => {
+    this.setState((prevState) => ({
+        count: prevState.count + 1
+    }))
+  }
 
-    <RenderMethodSetState />
-    </>
-    
-  )
+  componentDidMount() {
+    console.log("componentDidMount Called");
+  }
+  render() {
+    console.log("Render Called");
+    return (
+      <div className='App'>
+        <h2>Life Cycle Component Did Mount Method</h2>
+
+        {/* Example 2*/}
+
+        <h2>Count: {this.state.count}</h2>
+        <button onClick={this.incrementCount}>Increment</button>
+      </div>
+    )
+  }
 }
