@@ -1,29 +1,30 @@
-import React, {useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import './App.css'
-import Students from './Students'
 
-export default function App() {
+function App() {
 
-  // Example 1 Function to be passed as Props
-
-  const handleFunctionClick = () => {
-    console.log("Button Clicked");
-  }
+  // Example 2
 
   const [count, setCount] = useState(0);
 
-  const increment = () => {
-    setCount(count +1);
-  }
+  // Example 1
+
+  useEffect(()=>{
+    console.log("UseEffect  Hook Called");
+  }) 
 
   return (
     <>
-      <div className='App'>
-        <h2>Pass Function as Props</h2>
+    <div className='App'>
 
-        <Students handleClick={handleFunctionClick} count={count}  increment = {increment} />
-        </div>
+      <h2>UseEfet Hook</h2>
+
+      <h4>Count: {count}</h4>
+      <button onClick={()=>setCount(count +1)}>Increment</button>
+
+    </div>
     </>
   )
 }
 
+export default App;
