@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import './App.css'
+import Unmount from './Unmount';
 
 export default class App extends Component {
   constructor(){
       super();
       this.state = {
         count:0,
+        show: true,
       }
   }
   shouldComponentUpdate(nextProps, nextState) {
@@ -16,12 +18,17 @@ export default class App extends Component {
     return false;
   }
   render() {
-    console.log("Render called");
+    console.log("Clicked", this.state.show);
     return (
       <>
-      <div className='App'>Should Component Update</div>
+      <div className='App'>Life Cycle Methods</div>
       <h2>Count: {this.state.count}</h2>
       <button onClick={()=> this.setState({count:this.state.count +1})}>Update State</button>
+
+      <button onClick={()=>this.setState({show:!this.state.show})}>Remove Component</button>
+
+      {this.state.show ? <Unmount /> : "Removed"}
+
       </>
     )
   }
