@@ -1,44 +1,68 @@
 import React from 'react'
 import './App.css'
 
-// Bootstrap 5
-//import Button from 'react-bootstrap/Button';
-
-//import Alert from 'react-bootstrap/Alert';
-
-import {Button, Alert} from 'react-bootstrap';
-
 export default function App() {
+  // Example 1
+
+  const names = ["Samir", "Anil", "Navneet", "Saurabh"];
+
+  //Example 2 Array of objects
+
+  const products = [
+    {
+      id: 1,
+      name: "Product 1",
+      price: 100
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      price: 200
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      price: 300
+    }
+  ]
+
+  // Example 3 Return map method
+
+  const fruits = ["Apple", "Banana", "Orange", "Govava", "Mango"];
+
+  // Using map to transform the array of fruits into an array of react element
+
+  const fruitsIteam = fruits.map((fruit, index)=> <li key={index}>{fruit}</li>)
+
   return (
     <>
     <div className='App'>
-      <h2>Install Bootstrap In React Js</h2>
-      <Button variant="primary">Primary</Button>{' '}
-      <Button variant="secondary">Secondary</Button>{' '}
-      <Button variant="success">Success</Button>{' '}
-      <Button variant="warning">Warning</Button>{' '}
-      <Button variant="danger">Danger</Button>{' '}
-      <Button variant="info">Info</Button>{' '}
-      <Button variant="light">Light</Button>{' '}
-      <Button variant="dark">Dark</Button>
-      <Button variant="link">Link</Button>
+      <h2>Array with Map Function</h2>
 
-      {[
-        'primary',
-        'secondary',
-        'success',
-        'danger',
-        'warning',
-        'info',
-        'light',
-        'dark',
-      ].map((variant) => (
-        <Alert key={variant} variant={variant}>
-          This is a {variant} alert—check it out!
-        </Alert>
-      ))}
+      {/* Example 1 */}
 
-      <Alert variant='success'>This is single static alert</Alert>
+      <ul>
+        {
+          names.map((name, index)=>(
+            <li key={index}>{name}</li>
+          ))
+        }
+      </ul>
+
+      {/* Example 2 */}
+
+      <ul>
+        {
+          products.map((product)=>(
+            <li key={product.id}>{product.name}-{product.price}$</li>
+          ))
+        }
+      </ul>
+
+        {/* Example 3 */}
+
+        <ul>{fruitsIteam}</ul>
+
     </div>
     </>
   )
