@@ -1,45 +1,92 @@
 import React from 'react'
 import './App.css'
 
-import Table from 'react-bootstrap/Table';
+import {Table, Container, Row , Col} from "react-bootstrap";
 
 export default function App() {
-  // Example 1
 
-  const dataTable = [
-    {id:1, name:"Madan", age:22, location:"Noida"},
-    {id:2, name:"Ramesh",age:23, location:"Ghaziabad"},
-    {id:3, name:"Sunil", age:24, location:"Kanpur"},
-    {id:4, name:"Rahul", age:25, location:"Lucknow"},
-    {id:5, name:"Mohan", age:26, location:"Varansi"},
-  ]
+  // Example 1 
+
+  const countriesWithCities = [
+    {
+      country: "India",
+      cities: ["Kanpur","Nagpur","Noida","Ghaziabad","Meerut","Varansi"]
+    },
+    {
+      country: "Pakistan",
+      cities: ["Karachi","Islamabad","Lahoure"]
+    },
+    {
+      country: "BanglaDesh",
+      cities: ["Dhanka","Meerpur"]
+    },
+    {
+      country: "Nepal",
+      cities: ["Kathmandu"]
+    },
+  ];
+
+  // Example 2
+
+  const nestedData = [
+    {category: "Fruits", items: ["Apple", "Banana", "Orange", "Mango","Govava"]},
+    {category: "Vegetables", items: ["Carrot", "Broccoli", "Spinach", "Potato","Tomato"]},
+    {category: "Drinks", items: ["Water", "Juce", "Tea", "Cofee","Coldrinks"]}
+  ];
+
   return (
     <>
-    <div className='App'>
-      <h2>Bootstrap Table In React </h2>
-      <div>
-        <Table striped bordered hover size="sm" variant="dark">
-            <thead>
-              <tr> 
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Location</th>
-              </tr>
-            </thead>
-            <tbody>
-              {dataTable.map((data)=>(
-                <tr key={data.id}>
-                  <td>{data.id}</td>
-                  <td>{data.name}</td>
-                  <td>{data.age}</td>
-                  <td>{data.location}</td>
-                </tr>
-              ))}
-            </tbody>
-        </Table>
+      <div className='App'>
+        <h2>Nested Map Function In React</h2>
+        {/* Example 1 */}
+
+        <ul>
+          {countriesWithCities.map((countryObject, index)=>(
+            <li key={index}>
+              <b>{countryObject.country}</b>
+              <ul>
+                {countryObject.cities.map((city, cityIndex)=>(
+                  <li key={cityIndex}>
+                    {city}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+
+        {/* Example 2 */}
+
+        <Container>
+            <Row>
+                <Col md={9}>
+                    <Table className='table'>
+                        <thead>
+                          <tr>
+                              <th>Category</th>
+                              <th>Items</th>                              
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {nestedData.map((data, index)=>(
+                              <tr key={index}> 
+                                <td>{data.category}</td>
+                                <td>
+                                  <ul className='list-unstyled'>
+                                    {data.items.map((item, itemIndex)=>(
+                                      <li key={itemIndex}>{item}</li>
+                                    ))}
+                                  </ul>
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </Col>
+            </Row>
+        </Container>
+
       </div>
-    </div>
     </>
   )
 }
