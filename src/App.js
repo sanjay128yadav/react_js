@@ -1,39 +1,32 @@
-import React, {Fragment} from 'react'
+import React, {useState} from 'react'
 import './App.css'
+import ChildComponentA from './ChildComponentA';
+import ChildComponentB from './ChildComponentB';
 
 export default function App() {
+
+  const [sharedSate, setSharedState] = useState("");
+
+  const handleChange = (newValue)=>{
+    console.log("I am in Parent Component: ", newValue);
+    setSharedState(newValue);
+  }
+
+  // Example 2
+
+  const parentAlert = (data)=>{
+    alert("I am from Parent Component: "+data.name);
+    console.log(data);
+  }
+
   return (
+    <>
+    <div className='App'>
+      <h2> Lifting State UP In React</h2>
 
-      /* 
-      <React.Fragment>
-        <h2>Fragment In React</h2>
-        <h2>Using React.Fragment</h2>  
-      </React.Fragment>
-      
-      
-      
-      <Fragment>
-          <h2>Using Only Fragment</h2>  
-          <h2>Using Only Fragment</h2>  
-      </Fragment>
-
-      
-
-      
-      <div className='App'>
-        <h2>Using Only div</h2>  
-        <h2>Using Only div</h2> 
-      </div>
-
-      */
-
-      <>
-        <div>
-          <h2>Using Only empty tag</h2> 
-          <h2>Using Only empty tag</h2> 
-        </div>
-      </>
-    
-    
+      <ChildComponentA sharedSate={sharedSate} handleChange = {handleChange} />
+      <ChildComponentB sharedSate={sharedSate} alert={parentAlert} />
+    </div>
+    </>
   )
 }
