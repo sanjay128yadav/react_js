@@ -1,22 +1,34 @@
-import React, {useState} from 'react'
+import React, {useRef} from 'react'
 
 import './App.css'
 
 export default function App() {
 
-  const [inputValue, setInputValue] = useState("");
+  // Example 1
+  let inputRef1 = useRef(null);
+  let inputRef2 = useRef(null);
 
-  const handleCahage = (e)=>{
-    setInputValue(e.target.value);
-    console.log(e.target.value, inputValue);
+  const submitForm = (e) => {
+    e.preventDefault();  
+    console.log("First Input Value:", inputRef1.current.value);
+    console.log("Second Input Value:", inputRef2.current.value);
+
+    let input3 = document.getElementById("text3").value;
+    console.log("Third Input Value:", input3);
   }
 
   return (
     <>
-      <div className='App'>Controled Component</div>
+      <div className='App'>Uncontroled Component</div>
 
-      <input type='text' value={inputValue} onChange={handleCahage} />
-      <h4>{inputValue}</h4>
+      <form onSubmit={submitForm}>
+
+                <input type='text'  ref={inputRef1}/>
+                <input type='text'  ref={inputRef2} />
+                <input type='text' id='text3' />
+                <button>Submit</button>
+        
+      </form>
     </>
   )
 }
