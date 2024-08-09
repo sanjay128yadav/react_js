@@ -1,25 +1,42 @@
 import React, {useRef} from 'react'
 import './App.css'
+import ChildComponent from './ChildComponent'
 
 export default function App() {
+ 
   // Example 1
   const inputRef = useRef(null);
 
- // Example 2
+  const updateInput = ()=> {
+    inputRef.current.value = 10000;
+    inputRef.current.style.color = 'white'
+    inputRef.current.style.background = 'blue'
+    inputRef.current.focus();
+  }
 
- const handleButtonClick = () =>{
-    const inputValue = inputRef.current.value;
-    alert(`Input Value ${inputValue}`);
-    console.log(`Input Value ${inputValue}`);
- }
+  // Example 2
 
+  const childRef = useRef(null);
+
+  const handleButtonClick = ()=>{
+    if(childRef.current) {
+
+      childRef.current.handleButtonClick();
+
+    }
+  }
 
   return (
     <>
       <div className='App'>
-        <h2>Function based useRef Hook</h2>
-        <input type='text' ref={inputRef} />
-        <button onClick={handleButtonClick}>Get Input Value</button>
+          <h2>forward Ref in React</h2>
+          {/* <ChildComponent ref={inputRef} />
+          <button onClick={updateInput}>Update Input Value</button> */}
+
+          {/* Example 2 */}
+          <ChildComponent ref={childRef} />
+
+          <button onClick={handleButtonClick}>Click Button from Parent</button>
       </div>
     </>
   )
