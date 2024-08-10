@@ -1,10 +1,10 @@
 import React, {memo} from 'react'
 
- function ChildComponent() {
+ function ChildComponent({increment}) {
   console.log("Child component rendered!");  
   return (
     <>
-        <h5>Child Component</h5>
+        <button onClick={increment}>Increment Count</button>
     </>
   )
 }
