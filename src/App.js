@@ -1,35 +1,28 @@
-import React, {useState, useCallback} from 'react'
+import React, {createContext} from 'react'
 import './App.css'
-import ChildComponent from './ChildComponent';
+import Child1 from './Child1'
 
-export default function App() {
+// Create , provider, useContext
 
-  // Normal Example 1
-  const [count, setCount] = useState(0);
-  console.log("Parent Rendered!");
+const myContext = createContext();
 
-  // Example 2
+ function App() {  
 
-  const [count2, setCount2] = useState(0);
-  const IncrementCount = useCallback(()=>{
-
-      setCount2((prevCount)=>prevCount +1);
-      console.log("useCallback called");
-  },[])
+  const sharedData = "Hello from parent!!";
 
   return (
       <>
           <div className='App'>
-              <h4>useCallback Hook</h4>
-                <h6>Count1: {count}</h6>
-                <button onClick={()=>setCount(count+1)}>Increment</button>
+              <myContext.Provider value={sharedData}>
 
-                {/* Example 2 */}
-
-                <h6>Count2: {count2}</h6>
-
-                <ChildComponent increment = {IncrementCount} />
+                  {/* Example 1 */}
+                  <h4>useContext Hook</h4>
+                  <Child1 />
+              </myContext.Provider>
           </div>
       </>
   )
 }
+
+export default App;
+export {myContext}
