@@ -1,32 +1,28 @@
-import React, {createContext} from 'react'
+import React, {useState, useRef, useLayoutEffect} from 'react'
 import './App.css'
-import Child1 from './Child1'
 
-// Create , provider, useContext
+export default function App() {
 
-const myContext      = createContext();
-const myContextNew   = createContext();
+  const [width, setwidth] = useState(0);
+  const elementRef = useRef(null);
 
- function App() {  
-
-  const sharedData = "Hello from parent!!";
-  const sharedDataNew = "Hello from parent with new context!!";
+  useLayoutEffect(()=>{
+    if(elementRef.current){
+       setwidth(elementRef.current.getBoundingClientRect().width);
+    }
+  },[])
 
   return (
-      <>
-          <div className='App'>
-              <myContext.Provider value={sharedData}>
+    <>
+      <div className='App'>
+            <h4>useLayoutEffect Hook in React</h4>
 
-                <myContextNew.Provider value={sharedDataNew}>
-                  {/* Example 1 */}
-                  <h4>useContext Hook</h4>
-                  <Child1 />
-                </myContextNew.Provider>
-              </myContext.Provider>
-          </div>
-      </>
+            <div>Width Measurement Example</div>
+
+                <div ref={elementRef} style={{width:"550px", background:"lightblue", margin:"auto"}}>Element which width will be measur</div>
+                <p>Width: {width}</p>
+
+      </div>
+    </>
   )
 }
-
-export default App;
-export {myContext, myContextNew}
