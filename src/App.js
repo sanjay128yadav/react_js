@@ -1,26 +1,23 @@
-import React, {useSyncExternalStore} from 'react'
-import './App.css'
+import React from 'react'
+import './App.css';
+import Email from './Email';
 
 export default function App() {
-
-  // Example 1
-  const  width = useSyncExternalStore(
-    (listner)=>{
-      window.addEventListener("resize", listner);
-      return() => {
-        window.removeEventListener("resize", listner);
-      }
-    }, 
-    ()=>window.innerWidth
-  );
-
-  return (
-    <>
+  return (    
       <div className='App'>
 
-          <h4>useSyncExternalStore React Hook</h4>
-          <p>Width: {width}</p>
-      </div>
-    </>
+        <h4>useid React Hook</h4>
+
+        {/* Example 1 */}
+
+        <Email /> 
+
+        <article>
+        React useId Hook is introduced for the ReactJS versions above 18. This hook generates unique IDs i.e, returns a string that is stable across both the server and the client sides.
+        React useId Hook is introduced for the ReactJS versions above 18. This hook generates unique IDs i.e, returns a string that is stable across both the server and the client sides.
+        </article>
+        
+        <Email /> 
+      </div>    
   )
 }
