@@ -1,13 +1,16 @@
 import React from 'react'
 import './App.css'
-import PostMethod from './PostMethod'
+import UpdateMethod from './UpdateMethod'
+
 
 function App() {
   return (
     <>
         <div className='App'>
-            <h2>Fetch API Post Method</h2>    
-            <PostMethod />        
+            <h2>Fetch API PUT (Update) Method In React</h2> 
+
+            <UpdateMethod />   
+                   
         </div>
     </>
   )
