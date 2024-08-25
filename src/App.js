@@ -1,16 +1,16 @@
 import React from 'react'
 import './App.css'
-import CounterComponent from './CounterComponent'
+import GetMethod from './GetMethod'
 
-export default function App() {
+function App() {
   return (
     <>
         <div className='App'>
-            <h4>Custom Hook</h4>
-            {/* Example 1 */}
-
-            <CounterComponent />
+            <h2>Fetch API Get Method</h2>
+            <GetMethod />
         </div>
     </>
   )
 }
+
+export default App
