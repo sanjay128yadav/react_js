@@ -1,18 +1,17 @@
 import React from 'react'
 import './App.css'
-import UpdateMethod from './UpdateMethod'
+import GetDataApi from './GetDataApi'
 
 
 function App() {
-  return (
-    <>
-        <div className='App'>
-            <h2>Fetch API PUT (Update) Method In React</h2> 
+  return (    
+      <div className='App'>
+          <h2>Axios Library In React</h2> 
 
-            <UpdateMethod />   
-                   
-        </div>
-    </>
+          {/* Example 1 */}
+
+          <GetDataApi />                 
+      </div>    
   )
 }
 
