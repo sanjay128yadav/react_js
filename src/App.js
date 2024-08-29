@@ -4,8 +4,8 @@ import "./App.css";
 export default function App() {
   const [status, setSataus] = useState(true);
   return (
-    <div className='App'>
     <>
+    <div className='App'>    
       <h1>Show Hide Toggle</h1>
       {status ? <div className='status'>Content</div>: null}  
 
@@ -14,8 +14,8 @@ export default function App() {
       <button onClick={()=>setSataus(true)}>Show</button>
 
       {/* Example 2 Toggle*/} 
-      <button onClick={()=>setSataus(!status)}>Toggle</button>
-    </>  
+      <button onClick={()=>setSataus(!status)}>Toggle</button>      
     </div>
+    </>
   )
 }
