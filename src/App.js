@@ -1,23 +1,39 @@
-import React from 'react'
-import './App.css';
-import Email from './Email';
+import { useState } from 'react' 
+import './App.css'
 
-export default function App() {
-  return (    
-      <div className='App'>
+function App() { 
+  const [items, setItems] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
-        <h4>useid React Hook</h4>
+  const addItem = () => {
+    if(inputValue.trim()) {
+      setItems([...items, inputValue.trim()]);
+      setInputValue('');
+    }
+  };
 
-        {/* Example 1 */}
+  const removeItem = (index) => {
+    setItems(items.filter((_,i)=> i !== index));
+  }
 
-        <Email /> 
+  return (
+    <>
+       <div>
+        <h2>Dynamic List</h2>
+        <input type="text" value={inputValue} onChange={(e)=> setInputValue(e.target.value)} placeholder='Enter Item' />
+        <button onClick={addItem}>Add Item</button>
+       </div> 
 
-        <article>
-        React useId Hook is introduced for the ReactJS versions above 18. This hook generates unique IDs i.e, returns a string that is stable across both the server and the client sides.
-        React useId Hook is introduced for the ReactJS versions above 18. This hook generates unique IDs i.e, returns a string that is stable across both the server and the client sides.
-        </article>
-        
-        <Email /> 
-      </div>    
+       <ul>
+        {items.map((item, index) => (
+          <li key={index}>
+            {item}
+            <button onClick={()=> removeItem(index)}>Remove</button>
+          </li>
+        ))}
+       </ul>
+    </>
   )
 }
+
+export default App
