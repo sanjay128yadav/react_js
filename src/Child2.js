@@ -19,7 +19,7 @@ export default function Child2() {
                   {
                     (sharedDataNew) => {
                         return(
-                          <p>{sharedData} = {sharedDataNew}</p>
+                          <p>Sanjay{sharedData} = {sharedDataNew}</p>
                         )
                     }
                   }
